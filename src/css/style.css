@@ -3,20 +3,40 @@
 body {
   background-color: rgb(47, 47, 48);
   margin: 0 auto;
-  width: 100%;
+  /* width: 100%; */
   min-height: 100vh;
 }
 
 .container {
-  width: calc(100% -10%);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: minmax(200px, auto) repeat(2, 1fr);
+
+  grid-gap: 10px;
+
+  width: 90%;
   margin: 0 5%;
 }
 
+header {
+  grid-column: 1/8;
+  grid-row: 1/1;
+}
+main {
+  grid-column: 1/8;
+  grid-row: 2/4;
+}
+aside {
+  grid-column: 8/13;
+  grid-row: 1/4;
+}
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   background: rgba(220, 157, 11, 0.827);
-  display: inline-block;
-  width: 60%;
+  width: 100%;
   height: 110px;
   border-radius: 5px;
   margin-top: 50px;
@@ -25,11 +45,7 @@ body {
 .title h1 {
   color: white;
   font-size: 32px;
-  /* font-weight: 600; */
   font-family: "Roboto Condensed", sans-serif;
-  text-align: center;
-  justify-content: center;
-  margin-top: 15px;
 }
 
 .title p {
@@ -42,31 +58,37 @@ body {
 }
 
 main .divTextArea {
-  width: 60%;
-  min-height: 385px;
-  margin-top: 20px;
+  width: 100%;
+  min-height: 700px;
   background: rgba(11, 11, 11, 0.522);
   border-radius: 10px;
   box-shadow: 2px 10px 14px rgba(238, 152, 14, 0.541);
 }
 
+.containerTextArea {
+  display: grid;
+  grid-template-columns: 5% 1fr 5%;
+  /* grid-column: 5% 1fr 5%; */
+  padding-top: 50px;
+}
+.container .textArea {
+  grid-column: 2/3;
+  width: 100%;
+}
 main .divTextArea .userTextArea {
   background-color: rgba(0, 0, 0, 0.378);
   margin-top: 10px;
+
+  width: 100%;
+  height: 500px;
   color: rgb(89, 87, 87);
   font-size: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   padding-top: 10px;
-  padding-left: 5px;
+
   border-radius: 10px;
   border: solid 1px rgb(57, 56, 56);
-}
-
-.containerTextArea {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }
 
 main .divTextArea .containerTextArea .textArea .userTextArea:focus {
@@ -76,19 +98,21 @@ main .divTextArea .containerTextArea .textArea .userTextArea:focus {
 }
 main .divTextArea .containerButtons {
   width: 100%;
+}
+
+.containerButtons .labelText {
   display: flex;
   justify-content: center;
-  align-items: center;
-  /* background: red; */
+  color: rgb(129, 130, 131);
+  margin: 12px 0;
 }
 main .divTextArea .buttons {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 70%;
-  transform: translateX(30%);
+  width: 100%;
   color: wheat;
-  /* background-color: rebeccapurple; */
 }
 
 main .divTextArea .buttons:nth-child(1) {
@@ -96,24 +120,25 @@ main .divTextArea .buttons:nth-child(1) {
 }
 
 main .divTextArea .buttons button {
-  /* background-color: blue; */
-  width: 90px;
-  height: 30px;
-  margin: 12px 10px;
+  width: 120px;
+  height: 40px;
   color: white;
+  font-size: 18px;
   background: none;
+  margin: 12px 10px;
   padding: 5px;
   border-radius: 10px;
   text-align: center;
-  border: solid 1px rgb(0, 204, 255);
+  border: solid 2px rgb(0, 204, 255);
   cursor: pointer;
   box-shadow: 1px 5px rgba(0, 0, 0, 0.308);
+  /* transform: scale(1); */
   transition: all 0.5s ease;
 }
 
 main .divTextArea .buttons button:hover {
   background: rgb(5, 129, 245);
-  color: black;
+  /* color: black; */
   transform: scale(1.1);
 }
 
@@ -122,13 +147,10 @@ main .divTextArea .buttons button:active {
 }
 
 aside {
-  position: absolute;
+  margin-top: 50px;
+  margin-left: 20px;
   display: flex;
   justify-content: center;
-  width: 38%;
-  height: calc(100vh - 130px);
-  right: 15px;
-  top: 50px;
   background: rgba(10, 10, 10, 0.589);
   border-radius: 5px;
 }
@@ -137,47 +159,55 @@ aside .box {
   position: relative;
   width: 90%;
   height: 95%;
-  background: rgba(0, 0, 0, 0.133);
+  background: rgba(0, 0, 0, 0.244);
   border-radius: 10px;
   margin-top: 20px;
 }
 aside .box img {
-  /* position: absolute;
-  left: 30%;
-  top: 20px; */
   padding-left: 30%;
-  margin-top: 20px;
+  margin-top: 50px;
   width: 50%;
 }
 
 aside .box h3 {
   color: white;
   font-family: Helvetica, sans-serif;
-  font-size: 22px;
+  font-size: 25px;
   margin-left: 30%;
-  margin-top: 30px;
+  margin-top: 38px;
 }
 
-aside .box .boxButton button {
+aside .btnCopy {
   position: absolute;
   bottom: 20px;
   left: 40%;
-  background: none;
-  border: solid 1px rgb(0, 204, 255);
-  border-radius: 5px;
+  width: 120px;
+  height: 40px;
   color: white;
-  height: 30px;
-  width: 90px;
+  font-size: 18px;
+  background: none;
+  border: solid 2px rgb(0, 204, 255);
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 1px 5px rgba(0, 0, 0, 0.308);
   transition: all 0.5s ease;
 }
 
-aside .box .boxButton button:hover {
+aside .btnCopy:hover {
   background: rgb(5, 129, 245);
-  color: black;
   transform: scale(1.1);
   cursor: pointer;
 }
 
-aside .box .boxButton button:active {
+aside .btnCopy:active {
   transform: translateY(10px);
+}
+
+aside .textEncrypt {
+  width: 96%;
+  margin: 20px 10px;
+}
+
+aside .textEncrypt h3 {
+  margin: 0;
 }

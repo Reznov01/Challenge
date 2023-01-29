@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/css/reset.css" />
     <link rel="stylesheet" href="../src/css/style.css" />
+    <script defer src="../src/js/encrypter.js"></script>
     <title>Encrypter</title>
   </head>
   <body>
@@ -34,26 +35,33 @@
             </div>
           </div>
           <div class="containerButtons">
-            <div class="buttons">
+            <div class="labelText">
               <h5>Only lowercase and no accents</h5>
-              <button type="button">Encryter</button>
-              <button>Decrypt</button>
+            </div>
+            <div class="buttons">
+              <button type="button" id="encrypt">Encryter</button>
+              <button type="button" id="decrypt">Decrypt</button>
             </div>
           </div>
         </div>
       </main>
       <aside>
         <div class="box">
-          <div class="img">
-            <img
-              src="../src/img/undraw_the_search_s0xf.svg"
-              alt="imagen de busqueda"
-            />
+          <div class="noText" id="noText">
+            <div class="img">
+              <img
+                src="../src/img/undraw_the_search_s0xf.svg"
+                alt="imagen de busqueda"
+              />
+            </div>
+            <div class="boxButton">
+              <h3>No text to display</h3>
+            </div>
           </div>
-          <div class="boxButton">
-            <h3>No text to display</h3>
-            <button type="button">Copy</button>
+          <div class="textEncrypt" id="yesText">
+            <h3 id="userTextEncrypt"></h3>
           </div>
+          <button type="button" class="btnCopy" id="btnCopy">Copy</button>
         </div>
       </aside>
     </div>
